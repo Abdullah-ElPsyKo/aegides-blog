@@ -1,0 +1,6 @@
+{{ if and (fileExists "static/images/ads.webp") (fileExists "static/images/adh.webp") }}
+<div class="rightBar">
+    <img src="/images/ads.webp" alt="ad" class="rightBarImg">
+    <img src="/images/adh.webp" alt="ad" class="rightBarImgHr">
+</div>
+{{ end }}

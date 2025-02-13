@@ -356,6 +356,41 @@ a {
 }
 
 @media (max-width: 768px) {
+  .singleHead {
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+  }
+
+  .singleHeadTexts {
+    text-align: left;
+  }
+
+  .singleHeadTitle {
+    font-size: 34px;
+  }
+
+  .singleHeadDesc {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .singleHeadDetail {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .singleAvatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .singleCategory {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+
   .container {
     max-width: 640px;
   }
@@ -370,6 +405,28 @@ a {
 
   .searchButton span {
     display: none;
+  }
+  .singleBottom {
+    flex-direction: column;
+    gap: 20px; /* Zorgt voor meer ruimte tussen content en rightBar */
+    padding: 0 10px; /* Voegt wat padding toe aan de randen */
+  }
+
+  .singleContent {
+    flex: none;
+    width: 100%;
+    padding: 0 10px; /* Voorkomt dat de tekst tegen de rand aan zit */
+  }
+
+  .singleRightBar {
+    flex: none;
+    width: 100%;
+    padding: 0 10px; /* Voegt een marge toe aan de rechterbalk */
+  }
+
+  .rightBar {
+    position: static; /* Zorgt ervoor dat het niet vast blijft plakken aan de bovenkant */
+    margin-top: 20px; /* Voorkomt dat het tegen de content aanplakt */
   }
 }
 

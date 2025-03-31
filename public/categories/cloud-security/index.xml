@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud Security on Aegides Blog</title>
+    <link>https://blog.aegides.be/categories/cloud-security/</link>
+    <description>Recent content in Cloud Security on Aegides Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.aegides.be/categories/cloud-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Security, Compliance, and Governance - Study Notes</title>
+      <link>https://blog.aegides.be/aws-security-compliance-governance/</link>
+      <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/aws-security-compliance-governance/</guid>
+      <description>Security, Compliance, and Governance Auteur: Abdulla Bagishev&#xA;Jaar: 2025&#xA;Onderwerp: AWS Security, Compliance en Governance&#xA;Personal Note These are my personal notes as part of my self-study in AWS networking, based on the book AWS® Certified Advanced Networking Study Guide (Second Edition)—specifically the security chapters. Although this chapter focuses on AWS-specific security components, many of the concepts discussed apply broadly to general security principles outside of the AWS context.&#xA;Security compliance is a critical aspect of cloud engineering.</description>
+    </item>
+  </channel>
+</rss>

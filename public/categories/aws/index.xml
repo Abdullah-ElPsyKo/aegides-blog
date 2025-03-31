@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS on Aegides Blog</title>
+    <link>https://blog.aegides.be/categories/aws/</link>
+    <description>Recent content in AWS on Aegides Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.aegides.be/categories/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Security, Compliance, and Governance - Study Notes</title>
+      <link>https://blog.aegides.be/aws-security-compliance-governance/</link>
+      <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/aws-security-compliance-governance/</guid>
+      <description>Security, Compliance, and Governance Auteur: Abdulla Bagishev&#xA;Jaar: 2025&#xA;Onderwerp: AWS Security, Compliance en Governance&#xA;Personal Note These are my personal notes as part of my self-study in AWS networking, based on the book AWS® Certified Advanced Networking Study Guide (Second Edition)—specifically the security chapters. Although this chapter focuses on AWS-specific security components, many of the concepts discussed apply broadly to general security principles outside of the AWS context.&#xA;Security compliance is a critical aspect of cloud engineering.</description>
+    </item>
+    <item>
+      <title>Cloud Infrastructure Project – AWS Scalable Architecture</title>
+      <link>https://blog.aegides.be/aws_project/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/aws_project/</guid>
+      <description>AWS Cloud Infrastructure Project Author: Abdullah Bagishev&#xA;Year: 2024&#xA;Subject: AWS Scalable Architecture&#xA;Migrating a Monolithic Application to a Cloud-Native AWS Architecture Introduction This project was part of a Cybersecurity &amp;amp; Cloud academic assignment, where the goal was to modernize a legacy application for ACME Corp. The existing on-premises infrastructure struggled with scalability, cost-efficiency, and reliability, making it unsuitable for growing demands.&#xA;The solution? Migrating to AWS using a highly available, auto-scaled, and cost-effective architecture.</description>
+    </item>
+  </channel>
+</rss>

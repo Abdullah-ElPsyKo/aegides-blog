@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NIS2 on Aegides Blog</title>
+    <link>https://blog.aegides.be/categories/nis2/</link>
+    <description>Recent content in NIS2 on Aegides Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.aegides.be/categories/nis2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NIS2 Compliance Across All Sectors *Updated*</title>
+      <link>https://blog.aegides.be/nis2_iso27001/</link>
+      <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/nis2_iso27001/</guid>
+      <description>NIS2 Compliance Across All Sectors: Challenges and Technical Solutions Author: Abdulla Bagishev&#xA;Year: 2025&#xA;Subject: Cybersecurity Compliancy&#xA;NOTE: This paper is based on a school project I previously completed. The content was rewritten with the help of ChatGPT for personal reference and ease of review. The text was AI-generated to assist in organizing and clarifying the material.&#xA;1. Introduction to NIS2 The Network and Information Systems Directive 2 (NIS2) is the EU&amp;rsquo;s answer to rising cyber threats across vital sectors.</description>
+    </item>
+  </channel>
+</rss>

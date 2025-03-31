@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <title>Blog</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+  <div class="logo">
+    <a href="/">AE Blog</a>
+  </div>
+  <div class="links">
+    <a href="/">Homepage</a>
+    <a href="/categories">Categories</a>
+  </div>
+</nav>
+
+        
+<div class="single">
+  <div class="singleHead">
+    <div class="singleHeadTexts">
+      <h1 class="singleHeadTitle">Ethical Hacking: Magnum Opus - LLMNR Poisoning</h1>
+      <p class="singleHeadDesc">Een showcase van LLMNR poisoning en de impact op cybersecurity.</p>
+      <div class="singleHeadDetail">
+        
+          <img src="/images/AE.svg" loading="lazy" alt="Author Avatar" class="singleAvatar">
+        
+        <span>
+          
+            <a href="https://blog.aegides.be/authors/abdulla-bagishev/">Abdulla Bagishev</a>
+          
+        </span>
+        
+          <a href="https://blog.aegides.be/categories/cybersecurity/" class="singleCategory">Cybersecurity</a>
+        
+          <a href="https://blog.aegides.be/categories/ethical-hacking/" class="singleCategory">Ethical Hacking</a>
+        
+          <a href="https://blog.aegides.be/categories/networking/" class="singleCategory">Networking</a>
+        
+      </div>
+      <time>Dec 20, 2024</time>
+    </div>
+    
+      <img src="/images/LLMNR.png" alt="Ethical Hacking: Magnum Opus - LLMNR Poisoning" class="singleHeadImg">
+    
+  </div>
+  <div class="singleBottom">
+    <div class="singleContent"><h1 id="ethical-hacking-magnum-opus---llmnr-poisoning">Ethical Hacking: Magnum Opus - LLMNR Poisoning</h1>
+<p><strong>Auteur: Abdulla Bagishev</strong><br>
+<strong>Jaar: 2024-2025</strong><br>
+<strong>Onderwerp: Cybersecurity en netwerkbeveiliging</strong></p>
+<hr>
+<h2 id="inleiding">Inleiding</h2>
+<p>Link-Local Multicast Name Resolution (LLMNR) is een netwerkprotocol dat wordt gebruikt in Windows-netwerken om hostnamen te resolven wanneer een DNS-server niet beschikbaar is. Hoewel LLMNR functioneel waardevol is, introduceert het een significante kwetsbaarheid die kan worden misbruikt door aanvallers om gevoelige informatie te onderscheppen, zoals inloggegevens en netwerkverkeer.</p>
+<p>In deze paper onderzoeken we hoe LLMNR-poisoning werkt en demonstreren we hoe een aanvaller de zwakheden in dit protocol kan uitbuiten. Daarnaast behandelen we:</p>
+<ul>
+<li>Hoe LLMNR functioneert en waarom het kwetsbaar is.</li>
+<li>Implementatie van een <strong>Python-script</strong> om LLMNR-verzoeken te onderscheppen.</li>
+<li>Hoe <strong>tools zoals Responder</strong> kunnen worden ingezet voor LLMNR-exploits.</li>
+<li>Methoden om LLMNR-poisoning <strong>te detecteren en te voorkomen</strong>.</li>
+</ul>
+<hr>
+<h2 id="1-technische-achtergrond">1. Technische Achtergrond</h2>
+<h3 id="11-wat-is-llmnr">1.1 Wat is LLMNR?</h3>
+<p>LLMNR is een <strong>fallback-mechanisme</strong> voor het resolven van hostnamen in lokale netwerken wanneer DNS niet beschikbaar is. Het protocol maakt gebruik van <strong>multicast UDP-verkeer</strong> op poort 5355.</p>
+<h3 id="12-hoe-werkt-llmnr">1.2 Hoe werkt LLMNR?</h3>
+<p>Wanneer een apparaat een hostnaam moet resolven die niet in DNS voorkomt, stuurt het een <strong>multicast-query</strong> naar het netwerk. Alle apparaten ontvangen deze query en kunnen antwoorden als zij de gevraagde hostnaam hebben.</p>
+<h3 id="13-waarom-is-llmnr-kwetsbaar">1.3 Waarom is LLMNR kwetsbaar?</h3>
+<ol>
+<li><strong>Geen authenticatie</strong>: Het vertrouwt blind op het eerste antwoord.</li>
+<li><strong>Geen encryptie</strong>: Gevoelige data wordt onversleuteld verzonden.</li>
+<li><strong>Standaard ingeschakeld</strong>: Op veel Windows-systemen staat LLMNR standaard aan.</li>
+</ol>
+<h3 id="14-aanvalmechanisme-llmnr-poisoning">1.4 Aanvalmechanisme: LLMNR Poisoning</h3>
+<ol>
+<li>Het slachtoffer verstuurt een <strong>LLMNR-query</strong> voor een onbekende hostnaam.</li>
+<li>De aanvaller <strong>onderschept en beantwoordt de query</strong> met een gespooft IP-adres.</li>
+<li>Het slachtoffer <strong>stuurt zijn netwerkverkeer</strong> naar de aanvaller.</li>
+<li>De aanvaller <strong>onderschept wachtwoorden en gevoelige data</strong>.</li>
+</ol>
+<hr>
+<h2 id="2-threat-model-en-aanvalsopzet">2. Threat Model en Aanvalsopzet</h2>
+<h3 id="21-threat-model">2.1 Threat Model</h3>
+<ul>
+<li><strong>Aanvallersprofiel</strong>: Interne netwerkaanvallers, pentesters of red-teamers.</li>
+<li><strong>Doelwitprofiel</strong>: Windows-systemen met <strong>LLMNR ingeschakeld</strong>.</li>
+<li><strong>Aanvalsvector</strong>: Onbeveiligde netwerken zonder detectie- en preventiemechanismen.</li>
+</ul>
+<h3 id="22-aanvalsopzet">2.2 Aanvalsopzet</h3>
+<p><strong>Stap 1</strong>: <strong>Netwerkverkenning</strong> - Wireshark gebruiken om LLMNR-verzoeken te detecteren.<br>
+<strong>Stap 2</strong>: <strong>LLMNR Listener opzetten</strong> - Een Python-script of <strong>Responder</strong> configureren.<br>
+<strong>Stap 3</strong>: <strong>Aanval uitvoeren</strong> - Gespoofte LLMNR-responses sturen naar het slachtoffer.<br>
+<strong>Stap 4</strong>: <strong>Interceptie en exploitatie</strong> - NTLM-hashes verzamelen en brute-force aanvallen uitvoeren.</p>
+<hr>
+<h2 id="3-implementatie-van-een-llmnr-listener-in-python">3. Implementatie van een LLMNR Listener in Python</h2>
+<h3 id="31-beschrijving-van-het-script">3.1 Beschrijving van het script</h3>
+<p>We bouwen een <strong>Python LLMNR Listener</strong> die:</p>
+<ul>
+<li><strong>Luistert</strong> naar LLMNR-verzoeken op UDP-poort 5355.</li>
+<li><strong>Spooft</strong> het antwoord met het IP-adres van de aanvaller.</li>
+<li><strong>Logt</strong> de ontvangen gegevens voor analyse.</li>
+</ul>
+<h3 id="32-python-code">3.2 Python Code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MCAST_GRP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;224.0.0.252&#39;</span>  <span style="color:#75715e"># Multicast-adres LLMNR</span>
+</span></span><span style="display:flex;"><span>MCAST_PORT <span style="color:#f92672">=</span> <span style="color:#ae81ff">5355</span>          <span style="color:#75715e"># UDP-poort voor LLMNR</span>
+</span></span><span style="display:flex;"><span>REDIRECT_IPv4 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;192.168.1.26&#39;</span>  <span style="color:#75715e"># IP van aanvaller</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">start_llmnr_listener</span>():
+</span></span><span style="display:flex;"><span>    sock <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_DGRAM)
+</span></span><span style="display:flex;"><span>    sock<span style="color:#f92672">.</span>setsockopt(socket<span style="color:#f92672">.</span>SOL_SOCKET, socket<span style="color:#f92672">.</span>SO_REUSEADDR, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    sock<span style="color:#f92672">.</span>bind((MCAST_GRP, MCAST_PORT))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Listening for LLMNR requests on </span><span style="color:#e6db74">{</span>MCAST_GRP<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">{</span>MCAST_PORT<span style="color:#e6db74">}</span><span style="color:#e6db74">...&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        data, addr <span style="color:#f92672">=</span> sock<span style="color:#f92672">.</span>recvfrom(<span style="color:#ae81ff">1024</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[+] Received LLMNR request from </span><span style="color:#e6db74">{</span>addr<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>start_llmnr_listener, daemon<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-demonstratie-exploit-walkthrough">4. Demonstratie: Exploit Walkthrough</h2>
+<h3 id="41-testomgeving">4.1 Testomgeving</h3>
+<ul>
+<li><strong>Aanvallersysteem</strong>: Linux VM met <strong>Python-script of Responder</strong>.</li>
+<li><strong>Doelsysteem</strong>: Windows VM met <strong>LLMNR ingeschakeld</strong>.</li>
+<li><strong>Tools</strong>: Wireshark, Responder, Python.</li>
+</ul>
+<h3 id="42-stap-voor-stap-uitleg">4.2 Stap-voor-stap Uitleg</h3>
+<ol>
+<li><strong>Detecteer LLMNR-verzoeken</strong> in Wireshark (filter: <code>udp.port == 5355</code>).</li>
+<li><strong>Voer het Python-script uit</strong> om LLMNR-requests te onderscheppen.</li>
+<li><strong>Stuur gespoofte antwoorden</strong> en <strong>onderschep authenticatiegegevens</strong>.</li>
+</ol>
+<hr>
+<h2 id="5-detectie-en-preventie">5. Detectie en Preventie</h2>
+<h3 id="51-hoe-detecteer-je-llmnr-poisoning">5.1 Hoe detecteer je LLMNR-poisoning?</h3>
+<p>✅ <strong>Gebruik Wireshark</strong> en filter op <strong>UDP-poort 5355</strong>.
+✅ <strong>Gebruik IDS/IPS zoals Snort of Suricata</strong>.
+✅ <strong>Monitor verdachte verkeer naar ongebruikelijke IP-adressen</strong>.</p>
+<h3 id="52-hoe-voorkom-je-llmnr-poisoning">5.2 Hoe voorkom je LLMNR-poisoning?</h3>
+<p>🚫 <strong>LLMNR uitschakelen in Windows via Group Policy</strong>:</p>
+<ol>
+<li>Open <strong>gpedit.msc</strong> &gt; Ga naar <code>Computer Configuration → Administrative Templates → Network → DNS Client</code>.</li>
+<li><strong>Zet LLMNR op &lsquo;Disabled&rsquo;</strong>.</li>
+</ol>
+<p>🔐 <strong>Gebruik beveiligde DNS-protocollen zoals DNSSEC</strong>.</p>
+<hr>
+<h2 id="6-conclusie">6. Conclusie</h2>
+<p>LLMNR-poisoning is een krachtige techniek die kan worden misbruikt in netwerken waar het protocol actief is. Door de combinatie van <strong>een zwak authenticatie-mechanisme en multicast-verkeer</strong> is het een populaire aanvalsmethode onder pentesters en black-hat hackers.</p>
+<p>Om dit te mitigeren, moeten organisaties <strong>LLMNR uitschakelen, hun netwerken segmenteren en monitoringtools inzetten</strong>. Dit project toont aan dat een kleine netwerkconfiguratie-fout <strong>grote beveiligingsrisico’s kan opleveren</strong>.</p>
+<hr>
+<h2 id="7-referenties">7. Referenties</h2>
+<ul>
+<li><a href="https://tcm-sec.com/llmnr-poisoning-and-how-to-prevent-it/">TCM Security - LLMNR Poisoning Prevention</a></li>
+<li><a href="https://github.com/SpiderLabs/Responder">SpiderLabs Responder</a></li>
+</ul>
+</div>
+    <div class="singleRightBar">
+      
+
+    </div>
+  </div>
+</div>
+
+        <div class="footer">
+  <div class="footerLinks">
+    <a href="/">AE Blog</a> |
+    <a href="/categories">categories</a> |
+    <a href="/sitemap.xml">sitemap</a>
+  </div>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/abdullahbagishev" aria-label="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#FFFFFF"
+          d="M22.23 0H1.77C0.79 0 0 0.77 0 1.725V22.275C0 23.23 0.79 24 1.77 24H22.23C23.21 24 24 23.23 24 22.275V1.725C24 0.77 23.21 0 22.23 0ZM7.12 20.452H3.56V9H7.12V20.452ZM5.34 7.43C4.14 7.43 3.18 6.47 3.18 5.27C3.18 4.07 4.14 3.11 5.34 3.11C6.54 3.11 7.5 4.07 7.5 5.27C7.5 6.47 6.54 7.43 5.34 7.43ZM20.44 20.452H16.88V14.69C16.88 13.28 16.86 11.53 15 11.53C13.12 11.53 12.84 12.98 12.84 14.6V20.452H9.28V9H12.68V10.65H12.72C13.2 9.79 14.42 8.85 16.14 8.85C19.74 8.85 20.44 11.31 20.44 14.09V20.452Z" />
+      </svg>
+    </a>
+    <a href="https://aegides.be" aria-label="AEGIDES">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="#FFFFFF" stroke-width="2" fill="none" />
+        <text x="50%" y="50%" text-anchor="middle" dy=".35em" font-size="8" fill="#FFFFFF">AE</text>
+      </svg>
+    </a>
+  </div>
+</div>
+    </div>
+</body>
+
+</html>

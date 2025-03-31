@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cybersecurity on Aegides Blog</title>
+    <link>https://blog.aegides.be/categories/cybersecurity/</link>
+    <description>Recent content in Cybersecurity on Aegides Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.aegides.be/categories/cybersecurity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NIS2 Compliance Across All Sectors *Updated*</title>
+      <link>https://blog.aegides.be/nis2_iso27001/</link>
+      <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/nis2_iso27001/</guid>
+      <description>NIS2 Compliance Across All Sectors: Challenges and Technical Solutions Author: Abdulla Bagishev&#xA;Year: 2025&#xA;Subject: Cybersecurity Compliancy&#xA;NOTE: This paper is based on a school project I previously completed. The content was rewritten with the help of ChatGPT for personal reference and ease of review. The text was AI-generated to assist in organizing and clarifying the material.&#xA;1. Introduction to NIS2 The Network and Information Systems Directive 2 (NIS2) is the EU&amp;rsquo;s answer to rising cyber threats across vital sectors.</description>
+    </item>
+    <item>
+      <title>AWS Security, Compliance, and Governance - Study Notes</title>
+      <link>https://blog.aegides.be/aws-security-compliance-governance/</link>
+      <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/aws-security-compliance-governance/</guid>
+      <description>Security, Compliance, and Governance Auteur: Abdulla Bagishev&#xA;Jaar: 2025&#xA;Onderwerp: AWS Security, Compliance en Governance&#xA;Personal Note These are my personal notes as part of my self-study in AWS networking, based on the book AWS® Certified Advanced Networking Study Guide (Second Edition)—specifically the security chapters. Although this chapter focuses on AWS-specific security components, many of the concepts discussed apply broadly to general security principles outside of the AWS context.&#xA;Security compliance is a critical aspect of cloud engineering.</description>
+    </item>
+    <item>
+      <title>Ethical Hacking: Magnum Opus - LLMNR Poisoning</title>
+      <link>https://blog.aegides.be/llmnr-poisoning/</link>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/llmnr-poisoning/</guid>
+      <description>Ethical Hacking: Magnum Opus - LLMNR Poisoning Auteur: Abdulla Bagishev&#xA;Jaar: 2024-2025&#xA;Onderwerp: Cybersecurity en netwerkbeveiliging&#xA;Inleiding Link-Local Multicast Name Resolution (LLMNR) is een netwerkprotocol dat wordt gebruikt in Windows-netwerken om hostnamen te resolven wanneer een DNS-server niet beschikbaar is. Hoewel LLMNR functioneel waardevol is, introduceert het een significante kwetsbaarheid die kan worden misbruikt door aanvallers om gevoelige informatie te onderscheppen, zoals inloggegevens en netwerkverkeer.&#xA;In deze paper onderzoeken we hoe LLMNR-poisoning werkt en demonstreren we hoe een aanvaller de zwakheden in dit protocol kan uitbuiten.</description>
+    </item>
+    <item>
+      <title>Blue Team Security: Magnum Opus - CVE-2023-38831</title>
+      <link>https://blog.aegides.be/cve-2023-38831/</link>
+      <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://blog.aegides.be/cve-2023-38831/</guid>
+      <description>Blue Team Security: Magnum Opus - CVE-2023-38831 Auteur: Abdulla Bagishev&#xA;Jaar: 2023-2024&#xA;Onderwerp: Analyse van een kritische exploit in WinRAR&#xA;Inleiding CVE-2023-38831 is een ernstige kwetsbaarheid in WinRAR, een van de meest gebruikte bestandscompressieprogramma’s. Deze exploit stelt kwaadwillenden in staat om code op afstand uit te voeren door middel van een speciaal samengesteld ZIP-bestand. Dit vormt een kritieke bedreiging voor miljoenen gebruikers wereldwijd.&#xA;In deze analyse bespreken we:&#xA;De werking van CVE-2023-38831 en waarom het gevaarlijk is.</description>
+    </item>
+  </channel>
+</rss>

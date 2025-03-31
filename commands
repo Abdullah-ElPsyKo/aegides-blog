@@ -1,0 +1,2 @@
+docker build -t blog_website .
+docker run -d -p 1313:80 --name blog_container blog_website

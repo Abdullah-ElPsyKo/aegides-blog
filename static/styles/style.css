@@ -14,13 +14,9 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: "Outfit";
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-
 }
 
-body.light {
+body.light{
   --bg: #dee4eb;
   --text: #0b1529;
 }
@@ -171,7 +167,7 @@ a {
   font-size: 14px;
 }
 
-.pagination {
+.pagination{
   display: flex;
   gap: 10px;
   list-style: none;
@@ -182,7 +178,7 @@ a {
   margin-bottom: 30px;
 }
 
-.page-item {
+.page-item{
   border: 1px solid gray;
   width: 30px;
   height: 30px;
@@ -192,12 +188,11 @@ a {
   border-radius: 5px;
 }
 
-.page-item.active {
+.page-item.active{
   background-color: var(--text);
   color: var(--bg);
 }
-
-.page-item.disabled {
+.page-item.disabled{
   background-color: #313845;
   cursor: not-allowed;
 }
@@ -267,7 +262,11 @@ a {
   flex: 3;
   font-size: 20px;
   line-height: 32px;
+  padding: 0 20px;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
+
 
 .singleContent p,
 .singleContent h1,
@@ -317,19 +316,16 @@ a {
     max-width: 1366px;
   }
 }
-
 @media (max-width: 1366px) {
   .container {
     max-width: 1280px;
   }
 }
-
 @media (max-width: 1280px) {
   .container {
     max-width: 1024px;
   }
 }
-
 @media (max-width: 1024px) {
   .container {
     max-width: 768px;
@@ -354,8 +350,8 @@ a {
     width: 100%;
   }
 }
-
 @media (max-width: 768px) {
+
   .singleHead {
     flex-direction: column;
     gap: 20px;
@@ -390,11 +386,9 @@ a {
     font-size: 12px;
     padding: 3px 8px;
   }
-
   .container {
     max-width: 640px;
   }
-
   .links {
     font-size: 14px;
   }
@@ -403,35 +397,54 @@ a {
     display: none;
   }
 
-  .searchButton span {
+  .searchButton span{
     display: none;
   }
-  .singleBottom {
-    flex-direction: column;
-    gap: 20px; /* Zorgt voor meer ruimte tussen content en rightBar */
-    padding: 0 10px; /* Voegt wat padding toe aan de randen */
-  }
-
-  .singleContent {
-    flex: none;
-    width: 100%;
-    padding: 0 10px; /* Voorkomt dat de tekst tegen de rand aan zit */
-  }
-
-  .singleRightBar {
-    flex: none;
-    width: 100%;
-    padding: 0 10px; /* Voegt een marge toe aan de rechterbalk */
-  }
-
-  .rightBar {
-    position: static; /* Zorgt ervoor dat het niet vast blijft plakken aan de bovenkant */
-    margin-top: 20px; /* Voorkomt dat het tegen de content aanplakt */
-  }
 }
-
 @media (max-width: 640px) {
   .container {
     max-width: 475px;
+  }
+}
+
+.singleContent img {
+  display: block;
+  margin: 20px auto;
+  height: auto;
+  object-fit: contain;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Prevent upscaling for naturally small images */
+.singleContent img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Respect native image size if it's smaller than container */
+.singleContent img.small-img {
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+}
+
+
+
+@media (max-width: 640px) {
+  .singleContent img {
+    max-width: 90%;
+    height: auto;
+    margin: 15px auto;
+    object-fit: contain;
+  }
+
+  /* Ensure fixed dimensions don’t break layout */
+  .singleContent img[width],
+  .singleContent img[height] {
+    width: auto !important;
+    height: auto !important;
+    max-width: 90%;
   }
 }

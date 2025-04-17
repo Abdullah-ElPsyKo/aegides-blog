@@ -2,9 +2,7 @@ baseURL = 'https://blog.aegides.be/'
 languageCode = 'en-us'
 title = 'Aegides Blog'
 
-[pagination]
-  pagerSize = 4
-
+paginate = 4
 
 [params]
   description = "The fastest blog"

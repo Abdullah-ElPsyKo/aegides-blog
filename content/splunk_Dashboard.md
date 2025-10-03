@@ -127,7 +127,7 @@ These audit rules allow Splunk to receive enriched log events from `auditd` via 
 
 Below is the custom dashboard I created in Splunk. It covers detections such as SSH brute force, sudo usage, SUID escalation, persistence via cron, suspicious temp files, and data exfiltration.
 
-![Splunk Dashboard](/images/splunk_dashboard/<Linux Attack Detection_2025-04-17 at 05.42.11+0200_Splunk.png>)
+![Splunk Dashboard](/images/splunk_dashboard/dashboard.png)
 
 ---
 
